@@ -157,10 +157,10 @@ while video_capture.isOpened():
         if result < 2:
             print("Free Parking Spaces")
             has_space =  True
-            cv2.putText(frame, "Parking Spaces Available : %s" % str(TOTAL_PARKING_CAPACITY - result),  (10, 50), cv2.LINE_AA, 1, (0,255,0))
+            cv2.putText(frame, "Parking Spaces Available : %s" % str(TOTAL_PARKING_CAPACITY - result),  (10, 50), cv2.LINE_AA, 1, (100, 255, 0))
         else:
             has_space = False
-            cv2.putText(frame,"Don't Have Parking Spaces", (10, 50), cv2.LINE_AA, 1, (0,0,255))
+            cv2.putText(frame,"Don't Have Parking Spaces", (10, 50), cv2.LINE_AA, 1, (0, 0, 255))
 
         #cv2.imwrite("analyze/output/frame%d.jpg" % frame_counter, frame), for debug
 
