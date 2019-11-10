@@ -158,9 +158,16 @@ while video_capture.isOpened():
             print("Free Parking Spaces")
             has_space =  True
             cv2.putText(frame, "Parking Spaces Available : %s" % str(TOTAL_PARKING_CAPACITY - result),  (10, 50), cv2.LINE_AA, 1, (100, 255, 0))
+            # Add Time Stamp
+            time_stamp = time.strftime("%Y/%m/%d %H:%M:%S %Z", time.localtime())
+            cv2.putText(frame, time_stamp, (640, 700), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,255,0,0), 1, cv2.LINE_AA)
         else:
             has_space = False
             cv2.putText(frame,"Don't Have Parking Spaces", (10, 50), cv2.LINE_AA, 1, (0, 0, 255))
+
+            # Add Time Stamp
+            time_stamp = time.strftime("%Y/%m/%d %H:%M:%S %Z", time.localtime())
+            cv2.putText(frame, time_stamp, (640, 700), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0, 0), 1, cv2.LINE_AA)
 
         #cv2.imwrite("analyze/output/frame%d.jpg" % frame_counter, frame), for debug
 
