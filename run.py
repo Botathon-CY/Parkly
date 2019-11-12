@@ -1,7 +1,7 @@
 from threading import Thread
 import requests
 import time
-from compute import worker1, worker2
+from compute import worker1, worker2, worker3
 from parking_state import Settings
 
 Global = Settings()
@@ -11,7 +11,6 @@ def proccessFeed():
 
     print(Global.device.state)
     response = requests.post(url, data=Global.device.state, allow_redirects=True)
-    print(response)
 
     if response.status_code == 200:
         print("Successfully  posted")
@@ -24,6 +23,7 @@ if __name__ == '__main__':
     # Register Workers & Spawn
     Thread(target=worker1.worker1).start()
     Thread(target=worker2.worker2).start()
+    Thread(target=worker3.worker3).start()
 
     while True:
         if len(Global.device.state) > 0:

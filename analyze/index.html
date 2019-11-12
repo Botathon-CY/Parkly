@@ -26,6 +26,15 @@
 
     var reloadcam2 = setInterval("ChangeMedia2()",1000);
 
+    function ChangeMedia3(){
+        console.log("refreshing media");
+        var d = new Date();
+        var t = d.getTime();
+        document.getElementById('camara3').src = "output/frame-analyzed-3.jpg?"+t;
+    }
+
+    var reloadcam3 = setInterval("ChangeMedia3()",1000);
+
 -->
 </script>
 
@@ -36,6 +45,10 @@
 
 <img src="output/frame-analyzed-2.jpg" alt="Loading..." name="camara" width="46%" height="80%" border="0" id="camara2" />
 <br><h1>CCTV 2 Morriston Hospital WEST - Tensorflow Output</h1><br>
+
+
+<img src="output/frame-analyzed-3.jpg" alt="Loading..." name="camara" width="46%" height="80%" border="0" id="camara3" />
+<br><h1>CCTV 3 Morriston Hospital EAST - Tensorflow Output</h1><br>
 
  <!--<video  width="450" height="335"  controls>-->
   <!--<source src="input/parking1.mp4" type="video/mp4">-->
