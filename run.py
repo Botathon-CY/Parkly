@@ -14,8 +14,9 @@ def proccessFeed():
     feed1 = {"name": "NORTH", "spaces": Global.device.state.get("NORTH")}
     feed2 = {"name": "SOUTH", "spaces": Global.device.state.get("SOUTH")}
     feed3 = {"name": "EAST", "spaces": Global.device.state.get("EAST")}
+    liveFeed = {"name": "LIVE", "spaces": Global.device.state.get("LIVE")}
 
-    proccessTemplate = {"name" : "morriston", "parking_areas" : [feed1, feed2, feed3]}
+    proccessTemplate = {"name" : "morriston", "parking_areas" : [feed1, feed2, feed3, liveFeed]}
 
 
     print(proccessTemplate)
