@@ -9,7 +9,7 @@ from compute import COCO_MODEL_PATH, MODEL_DIR, MaskRCNNConfig, get_car_boxes, s
 def worker2():
 
     # Video file or camera to process - set this to 0 to use your webcam instead of a video file
-    VIDEO_SOURCE = "analyze/input/rldc.mp4"
+    VIDEO_SOURCE = "analyze/input/rldc2.mp4"
 
     # Physical capacity of area
 
