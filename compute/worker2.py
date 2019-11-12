@@ -4,6 +4,7 @@ import numpy as np
 import mrcnn.utils
 from mrcnn.model import MaskRCNN
 from compute import COCO_MODEL_PATH, MODEL_DIR, MaskRCNNConfig, get_car_boxes, space_Violation
+from parking_state import Settings
 
 
 def worker2():
@@ -13,7 +14,7 @@ def worker2():
 
     # Physical capacity of area
 
-    TOTAL_PARKING_CAPACITY = 10
+    TOTAL_PARKING_CAPACITY = 4
 
     # Create a Mask-RCNN model in inference mode
     model = MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=MaskRCNNConfig())
@@ -125,6 +126,12 @@ def worker2():
             # cv2.imshow('Video', frame)
             #add a sleep for demo
             # time.sleep(5)
+
+            feed2 = Settings()
+            feed2.device.state.update({'SOUTH': result})
+
+            print("-----STATE--------")
+            print(feed2.device.state)
 
         if has_space:
             # print("Free Parking Spaces")
