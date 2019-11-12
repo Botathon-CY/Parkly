@@ -9,9 +9,17 @@ Global = Settings()
 def proccessFeed():
 
     url = 'https://i2yv4ll3q7.execute-api.eu-west-1.amazonaws.com/hack/space/current'
-    payload = json.dumps(Global.device.state)
-    print(payload)
-    response = requests.post(url, data=payload, allow_redirects=True)
+    # payload = json.dumps(Global.device.state)
+
+    feed1 = {"name": "NORTH", "spaces": Global.device.state.get("NORTH")}
+    feed2 = {"name": "SOUTH", "spaces": Global.device.state.get("SOUTH")}
+    feed3 = {"name": "EAST", "spaces": Global.device.state.get("EAST")}
+
+    proccessTemplate = {"name" : "morriston", "parking_areas" : [feed1, feed2, feed3]}
+
+
+    print(proccessTemplate)
+    response = requests.post(url, data=json.dumps(proccessTemplate), allow_redirects=True)
 
     if response.status_code == 200:
         print("Successfully  posted")
