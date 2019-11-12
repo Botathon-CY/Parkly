@@ -128,7 +128,7 @@ def worker2():
             # time.sleep(5)
 
             feed2 = Settings()
-            feed2.device.state.update({'SOUTH': result})
+            feed2.device.state.update({'SOUTH': TOTAL_PARKING_CAPACITY - result})
 
             print("-----STATE--------")
             print(feed2.device.state)
