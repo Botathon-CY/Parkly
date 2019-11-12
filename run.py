@@ -2,7 +2,7 @@ from threading import Thread
 import requests
 import json
 import time
-from compute import worker1, worker2, worker3, worker4
+from compute import worker1, worker2, worker3
 from parking_state import Settings
 
 Global = Settings()
@@ -19,21 +19,20 @@ def proccessFeed():
     proccessTemplate = {"name" : "morriston", "parking_areas" : [feed1, feed2, feed3, liveFeed]}
 
 
-    # print(proccessTemplate)
-    # response = requests.post(url, data=json.dumps(proccessTemplate), allow_redirects=True)
-    #
-    # if response.status_code == 200:
-    #     print("Successfully  posted")
-    # else:
-    #     print("Error: Bad request")
+    print(proccessTemplate)
+    response = requests.post(url, data=json.dumps(proccessTemplate), allow_redirects=True)
+
+    if response.status_code == 200:
+        print("Successfully  posted")
+    else:
+        print("Error: Bad request")
 
 if __name__ == '__main__':
 
     # Register Workers & Spawn
-    # Thread(target=worker1.worker1).start()
-    # Thread(target=worker2.worker2).start()
-    # Thread(target=worker3.worker3).start()
-    Thread(target=worker4.worker4).start()
+    Thread(target=worker1.worker1).start()
+    Thread(target=worker2.worker2).start()
+    Thread(target=worker3.worker3).start()
 
     while True:
         if len(Global.device.state) > 0:
