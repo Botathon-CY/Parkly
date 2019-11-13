@@ -14,7 +14,7 @@ def worker4():
 
     # Physical capacity of area
 
-    TOTAL_PARKING_CAPACITY = 70
+    TOTAL_PARKING_CAPACITY = 120
 
     # Create a Mask-RCNN model in inference mode
     model = MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=MaskRCNNConfig())
@@ -39,7 +39,46 @@ def worker4():
         if not success:
             break
 
-        parking_areas = np.array([[304, 556, 359, 650]])
+        parking_areas = np.array([[390,713,444,800],
+                                    [371,658,421,761],
+                                    [366,393,421,520],
+                                    [278,538,314,605],
+                                    [352,630,392,718],
+                                    [260,518,293,573],
+                                    [262,260,300,344],
+                                    [405,261,450,420],
+                                    [323,270,371,375],
+                                    [299,572,338,667],
+                                    [295,269,341,389],
+                                    [234,173,266,209],
+                                    [413,412,448,520],
+                                    [274,353,308,445],
+                                    [241,345,272,413],
+                                    [205,437,225,484],
+                                    [213,458,235,503],
+                                    [335,617,376,685],
+                                    [196,444,210,487],
+                                    [138,192,161,219],
+                                    [222,475,259,553],
+                                    [169,399,187,434],
+                                    [357,373,395,466],
+                                    [158,382,169,410],
+                                    [182,417,200,456],
+                                    [162,406,179,442],
+                                    [151,382,164,414],
+                                    [320,616,340,669],
+                                    [227,328,258,403],
+                                    [189,433,205,477],
+                                    [174,470,193,529],
+                                    [328,367,373,494],
+                                    [120,447,131,466],
+                                    [305,572,332,598],
+                                    [291,356,333,469],
+                                    [272,558,285,600],
+                                    [389,260,422,384],
+                                    [145,377,158,407],
+                                    [185,413,198,433],
+                                    [125,446,137,465]])
 
         overlaps = parking_areas
 
@@ -103,7 +142,7 @@ def worker4():
             result = space_Violation(overlaps)
 
 
-            if result < 2:
+            if result < TOTAL_PARKING_CAPACITY:
                 print("Free Parking Spaces")
                 has_space =  True
                 cv2.putText(frame, "Parking Spaces Available : %s" % str(TOTAL_PARKING_CAPACITY - result),  (10, 50), cv2.LINE_AA, 1, (100, 255, 0))
