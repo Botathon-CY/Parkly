@@ -3,64 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <title>Parkly - UI</title>
+    <style>
+        .column {
+            float: left;
+            width: 48%;
+            padding: 5px;
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 <body>
 
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-<script language="javascript" type="text/javascript" >
-<!--
-    function ChangeMedia(){
+<script language="javascript" type="text/javascript">
+    <!--
+    function ChangeMedia() {
         console.log("refreshing media");
         var d = new Date();
         var t = d.getTime();
-        document.getElementById('camara1').src = "output/frame-analyzed-1.jpg?"+t;
+        document.getElementById('camara1').src = "output/frame-analyzed-1.jpg?" + t;
     }
-    var reloadcam = setInterval("ChangeMedia()",1000);
 
-    function ChangeMedia2(){
+    var reloadcam = setInterval("ChangeMedia()", 1000);
+
+    function ChangeMedia2() {
         console.log("refreshing media");
         var d = new Date();
         var t = d.getTime();
-        document.getElementById('camara2').src = "output/frame-analyzed-2.jpg?"+t;
+        document.getElementById('camara2').src = "output/frame-analyzed-2.jpg?" + t;
     }
 
-    var reloadcam2 = setInterval("ChangeMedia2()",1000);
+    var reloadcam2 = setInterval("ChangeMedia2()", 1000);
 
-    function ChangeMedia3(){
+    function ChangeMedia3() {
         console.log("refreshing media");
         var d = new Date();
         var t = d.getTime();
-        document.getElementById('camara3').src = "output/frame-analyzed-3.jpg?"+t;
+        document.getElementById('camara3').src = "output/frame-analyzed-3.jpg?" + t;
     }
 
-    var reloadcam3 = setInterval("ChangeMedia3()",1000);
+    var reloadcam3 = setInterval("ChangeMedia3()", 1000);
 
--->
+    -->
 </script>
 
-<img src="output/frame-analyzed-1.jpg" alt="Loading..." name="camara" width="46%" height="80%" border="0" id="camara1" />
-<br><h1>CCTV 1 Morriston Hospital NORTH - Tensorflow Output</h1><br>
+<div class="row">
+    <div class="column">
+        <img src="output/frame-analyzed-1.jpg" alt="Loading..." name="camara" width="100%" height="100%" border="0"
+             id="camara1"/>
+        <br>
+        <h1>CCTV 1 Morriston Hospital NORTH - Tensorflow Output</h1><br>
+    </div>
+    <div class="column">
 
+        <img src="output/frame-analyzed-2.jpg" alt="Loading..." name="camara" width="100%" height="100%" border="0"
+             id="camara2"/>
+        <br>
+        <h1>CCTV 2 Morriston Hospital WEST - Tensorflow Output</h1><br>
+    </div>
+</div>
 
-
-<img src="output/frame-analyzed-2.jpg" alt="Loading..." name="camara" width="46%" height="80%" border="0" id="camara2" />
-<br><h1>CCTV 2 Morriston Hospital WEST - Tensorflow Output</h1><br>
-
-
-<img src="output/frame-analyzed-3.jpg" alt="Loading..." name="camara" width="46%" height="80%" border="0" id="camara3" />
-<br><h1>CCTV 3 Morriston Hospital EAST - Tensorflow Output</h1><br>
-
- <!--<video  width="450" height="335"  controls>-->
-  <!--<source src="input/parking1.mp4" type="video/mp4">-->
-  <!--<source src="movie.ogg" type="video/ogg">-->
+<div class="row">
+<div class="column">
+        <img src="output/frame-analyzed-3.jpg" alt="Loading..." name="camara" width="100%" height="100%" border="0"
+             id="camara3"/>
+        <h1>CCTV 3 Morriston Hospital EAST - Tensorflow Output</h1><br>
+    </div>
+</div>
+<!--<video  width="450" height="335"  controls>-->
+<!--<source src="input/parking1.mp4" type="video/mp4">-->
+<!--<source src="movie.ogg" type="video/ogg">-->
 <!--Your browser does not support the video tag.-->
 <!--</video>-->
 
- <style>
+<style>
     body {
-      font-family: 'Roboto', sans-serif;
-      font-size: 10px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 10px;
     }
-  </style>
+</style>
 </body>
 </html>
