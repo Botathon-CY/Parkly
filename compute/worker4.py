@@ -14,7 +14,7 @@ def worker4():
 
     # Physical capacity of area
 
-    TOTAL_PARKING_CAPACITY = 4
+    TOTAL_PARKING_CAPACITY = 70
 
     # Create a Mask-RCNN model in inference mode
     model = MaskRCNN(mode="inference", model_dir=MODEL_DIR, config=MaskRCNNConfig())
