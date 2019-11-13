@@ -46,7 +46,16 @@
         document.getElementById('camara3').src = "output/frame-analyzed-3.jpg?" + t;
     }
 
-    var reloadcam3 = setInterval("ChangeMedia3()", 1000);
+    var reloadcam4 = setInterval("ChangeMedia3()", 1000);
+
+    function ChangeMedia4() {
+        console.log("refreshing media");
+        var d = new Date();
+        var t = d.getTime();
+        document.getElementById('camara4').src = "output/frame-analyzed-4.jpg?" + t;
+    }
+
+    var reloadcam4 = setInterval("ChangeMedia4()", 1000);
 
     -->
 </script>
@@ -68,10 +77,15 @@
 </div>
 
 <div class="row">
-<div class="column">
+    <div class="column">
         <img src="output/frame-analyzed-3.jpg" alt="Loading..." name="camara" width="100%" height="100%" border="0"
              id="camara3"/>
         <h1>CCTV 3 Morriston Hospital EAST - Tensorflow Output</h1><br>
+    </div>
+    <div class="column">
+        <img src="output/frame-analyzed-4.jpg" alt="Loading..." name="camara" width="100%" height="100%" border="0"
+             id="camara4"/>
+        <h1>CCTV 4 Morriston Hospital EAST - Tensorflow Output</h1><br>
     </div>
 </div>
 <!--<video  width="450" height="335"  controls>-->

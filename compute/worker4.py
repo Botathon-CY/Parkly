@@ -2,38 +2,18 @@ import time
 import cv2
 import numpy as np
 import mrcnn.utils
-import boto3
-import numpy
-import subprocess as sp
 from mrcnn.model import MaskRCNN
 from compute import COCO_MODEL_PATH, MODEL_DIR, MaskRCNNConfig, get_car_boxes, space_Violation
 from parking_state import Settings
 
 
-def worker3():
+def worker4():
 
     # Video file or camera to process - set this to 0 to use your webcam instead of a video file
-    # VIDEO_SOURCE = "analyze/input/rldc4.mp4"
-    FFMPEG_BIN = "ffmpeg"
-    STREAM_NAME = "livevideo"
-
-    session = boto3.Session(
-        aws_access_key_id='AKIAR7VQEQKA2IT5HW46',
-        aws_secret_access_key='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',
-        region_name='eu-west-1'
-    )
-
-    kvs = session.client("kinesisvideo")
-
-    # Grab the endpoint from GetDataEndpoint
-    endpoint = kvs.get_data_endpoint(APIName="GET_HLS_STREAMING_SESSION_URL", StreamName=STREAM_NAME)['DataEndpoint']
-    # Grab the HLS Stream URL from the endpoint
-    kvam = session.client("kinesis-video-archived-media", endpoint_url=endpoint)
-    VIDEO_URL = kvam.get_hls_streaming_session_url(StreamName=STREAM_NAME, PlaybackMode="LIVE")['HLSStreamingSessionURL']
-
-
+    VIDEO_SOURCE = "http://109.236.111.203:90/mjpg/video.mjpg"
 
     # Physical capacity of area
+
     TOTAL_PARKING_CAPACITY = 4
 
     # Create a Mask-RCNN model in inference mode
@@ -46,7 +26,7 @@ def worker3():
     parked_car_boxes = None
 
     # Load the video file we want to run detection on
-    video_capture = cv2.VideoCapture(VIDEO_URL)
+    video_capture = cv2.VideoCapture(VIDEO_SOURCE)
     cv2.waitKey(33)
 
     frame_counter = 1
@@ -59,7 +39,7 @@ def worker3():
         if not success:
             break
 
-        parking_areas = np.array([])
+        parking_areas = np.array([[304, 556, 359, 650]])
 
         overlaps = parking_areas
 
@@ -112,15 +92,16 @@ def worker3():
             print("parking_areas")
             print(parking_areas)
 
-            # overlaps = mrcnn.utils.compute_overlaps(car_boxes, parking_areas) # parking_areas
+            overlaps = mrcnn.utils.compute_overlaps(car_boxes, parking_areas) # parking_areas
 
-            # print(len(overlaps.tolist()))
+            print(len(overlaps.tolist()))
 
             print("Checking overlaps .... frame %d" % frame_counter)
+            print(overlaps)
             # print(overlaps)
-            # print(overlaps)
-            # print(overlaps < 0.5)
+            print(overlaps < 0.5)
             result = space_Violation(overlaps)
+
 
             if result < 2:
                 print("Free Parking Spaces")
@@ -139,18 +120,18 @@ def worker3():
 
             #cv2.imwrite("analyze/output/frame%d.jpg" % frame_counter, frame), for debug
 
-            cv2.imwrite("analyze/output/frame-analyzed-3.jpg", frame)
+            cv2.imwrite("analyze/output/frame-analyzed-4.jpg", frame)
 
             # Show the frame of video on the screen, for debug
             # cv2.imshow('Video', frame)
             #add a sleep for demo
             # time.sleep(5)
 
-            feed4 = Settings()
-            feed4.device.state.update({'LIVE': TOTAL_PARKING_CAPACITY - result})
+            feed2 = Settings()
+            feed2.device.state.update({'SOUTH': TOTAL_PARKING_CAPACITY - result})
 
             print("-----STATE--------")
-            print(feed4.device.state)
+            print(feed2.device.state)
 
         if has_space:
             # print("Free Parking Spaces")

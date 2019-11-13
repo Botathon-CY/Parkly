@@ -2,7 +2,7 @@ from threading import Thread
 import requests
 import json
 import time
-from compute import worker1, worker2, worker3
+from compute import worker1, worker2, worker3, worker4
 from parking_state import Settings
 
 Global = Settings()
@@ -33,6 +33,7 @@ if __name__ == '__main__':
     Thread(target=worker1.worker1).start()
     Thread(target=worker2.worker2).start()
     Thread(target=worker3.worker3).start()
+    Thread(target=worker4.worker4).start()
 
     while True:
         if len(Global.device.state) > 0:
