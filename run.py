@@ -11,10 +11,10 @@ def proccessFeed():
     url = 'https://i2yv4ll3q7.execute-api.eu-west-1.amazonaws.com/hack/space/current'
     # payload = json.dumps(Global.device.state)
 
-    feed1 = {"name": "NORTH", "spaces": Global.device.state.get("NORTH")}
-    feed2 = {"name": "SOUTH", "spaces": Global.device.state.get("SOUTH")}
-    feed3 = {"name": "EAST", "spaces": Global.device.state.get("EAST")}
-    liveFeed = {"name": "LIVE", "spaces": Global.device.state.get("LIVE")}
+    feed1 = {"name": "NORTH", "spaces": Global.device.state.get("NORTH") or 0}
+    feed2 = {"name": "SOUTH", "spaces": Global.device.state.get("SOUTH") or 0}
+    feed3 = {"name": "EAST", "spaces": Global.device.state.get("EAST") or 0}
+    liveFeed = {"name": "LIVE", "spaces": Global.device.state.get("LIVE") or 0}
 
     proccessTemplate = {"name" : "morriston", "parking_areas" : [feed1, feed2, feed3, liveFeed]}
 
