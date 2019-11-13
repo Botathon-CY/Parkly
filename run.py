@@ -30,9 +30,9 @@ def proccessFeed():
 if __name__ == '__main__':
 
     # Register Workers & Spawn
-    Thread(target=worker1.worker1).start()
-    Thread(target=worker2.worker2).start()
-    Thread(target=worker3.worker3).start()
+    # Thread(target=worker1.worker1).start()
+    # Thread(target=worker2.worker2).start()
+    # Thread(target=worker3.worker3).start()
     Thread(target=worker4.worker4).start()
 
     while True:
