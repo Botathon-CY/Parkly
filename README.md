@@ -1,7 +1,7 @@
 # Parkly - Parking Availability Spatial Detection Trained ML Models
 
 * Author : Dheeraj Thankachan 
-* Licence: This project should not be used without the permission of the author.
+* Licence: MIT
 
 ```
 Visual output can be seen in Parkly/analyze/index.html
